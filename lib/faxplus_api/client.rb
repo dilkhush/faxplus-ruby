@@ -17,34 +17,28 @@ module FaxplusApi
       @base_url = BASE_URL
     end
 
-    def file(params = {}, headers: headers)
+    def file(params = {})
       @file ||= File.new(self)
     end
 
-    def account(params = {}, headers: headers)
+    def account(params = {})
       @account ||= Account.new(self)
     end
 
-    def fax(params = {}, headers: headers)
+    def fax(params = {})
       @fax ||= Fax.new(self)
     end
 
-    def number(params = {}, headers: headers)
+    def number(params = {})
       @number ||= Number.new(self)
     end
 
-    def outbox(params = {}, headers: headers)
+    def outbox(params = {})
       @outbox ||= Outbox.new(self)
     end
 
-    def webhook(params = {}, headers: headers)
+    def webhook(params = {})
       @webhook ||= Webhook.new(self)
     end
-
-    private
-
-      def headers
-        {'Authorization' => "Bearer #{@access_token}"}
-      end
   end
 end

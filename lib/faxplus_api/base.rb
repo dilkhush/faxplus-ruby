@@ -3,9 +3,14 @@ require 'json'
 
 module FaxplusApi
   class Base
-    def make_request(url: , data: , headers: , method: 'post')
+    def initialize(client)
+      @client = client
+      @access_token = client.access_token
+      @base_url = client.base_url
+    end
+
+    def make_request(url: , data: , method: 'get')
       begin
-        headers = default_headers.merge(headers)
         response =  if method == 'post'
                       RestClient.post(url, data.to_json, headers)
                     elsif method == 'put'
@@ -26,10 +31,11 @@ module FaxplusApi
 
     private
 
-      def default_headers
+      def headers
         {
           'Content-Type' => 'application/json',
-          'Accept' => 'application/json'
+          'Accept' => 'application/json',
+          'Authorization' => "Bearer #{@access_token}"
         }
       end
   end
