@@ -12,7 +12,7 @@ module FaxplusApi
 
     attr_reader :access_token, :base_url
 
-    def initialize(access_token:)
+    def initialize(access_token: ENV['FAXPLUS_PAT_TOKEN'])
       @access_token = access_token
       @base_url = BASE_URL
     end
