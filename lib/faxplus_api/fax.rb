@@ -12,7 +12,7 @@ module ShipdayApi
       make_request(url: url, data: data, headers: headers, method: 'get')
     end
 
-    def show(url: "#{@base_url}/accounts/%{user_id}/faxes/%{fax_id}", fax_id:, user_id:, data: {}, headers: headers)
+    def get(url: "#{@base_url}/accounts/%{user_id}/faxes/%{fax_id}", fax_id:, user_id:, data: {}, headers: headers)
       url = url % {user_id: user_id, fax_id: fax_id}
       make_request(url: url, data: data, headers: headers, method: 'get')
     end
