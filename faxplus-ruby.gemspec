@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dilkhush Soni"]
   spec.email         = ["dilkhushsoni2010@gmail.com"]
 
-  spec.summary       = %q{A simple wrapper around ifaxapp's API}
+  spec.summary       = %q{A simple wrapper around faxplus's API}
   spec.homepage      = "https://github.com/dilkhush/faxplus-ruby"
   spec.license       = "MIT"
 
