@@ -43,7 +43,8 @@ client.fax.revoke(user_id: 'userid', fax_id: 'fax_id') # Delete a fax
 ## Files.
 
 ```ruby
-client.file.upload(user_id: 'userid') # Upload a file TODO: Need proper params how to send file
+# Upload a file
+client.file.upload(user_id: 'userid', data: {fax_file: File.open('pdf_file_path.pdf'), multipart: true}) => {:path => "/storage/transient-hsfhadhaskha.pdf"}
 client.file.get(user_id: 'userid', fax_id: 'fax_id') # Download fax file
 client.file.fax_report(user_id: 'userid', fax_id: 'fax_id') # Get fax confirmation report
 ```
@@ -51,8 +52,8 @@ client.file.fax_report(user_id: 'userid', fax_id: 'fax_id') # Get fax confirmati
 
 ```ruby
 client.outbox.list(user_id: 'userid') # List faxes in the outbox
-# TODO: require proper params here
-client.outbox.send(user_id: 'userid') # Send a fax 
+# file_path from the client.file.upload output path
+client.outbox.send(user_id: 'userid', data: {from: "+12345667", to: ["+12345688"], files: [file_path]}) # Send a fax 
 client.outbox.get(user_id: 'userid', outbox_fax_id: 'outbox_fax_id') # List outgoing faxes
 client.outbox.update(user_id: 'userid', outbox_fax_id: 'outbox_fax_id') # Delete an outgoing fax
 client.outbox.delete(user_id: 'userid', outbox_fax_id: 'outbox_fax_id') # Modify an outgoing fax
