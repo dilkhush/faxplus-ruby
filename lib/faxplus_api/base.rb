@@ -9,16 +9,16 @@ module FaxplusApi
       @base_url = client.base_url
     end
 
-    def make_request(url: , data: , method: 'get')
+    def make_request(url:, data:, method: 'get', content_type: 'application/json')
       begin
         response =  if method == 'post'
-                      RestClient.post(url, data.to_json, headers)
+                      RestClient.post(url, data, headers(content_type))
                     elsif method == 'put'
-                      RestClient.put(url, data.to_json, headers)
+                      RestClient.put(url, data, headers(content_type))
                     elsif method == 'get'
-                      RestClient.get(url, headers)
+                      RestClient.get(url, headers(content_type))
                     elsif method == 'delete'
-                      RestClient.delete(url, headers)
+                      RestClient.delete(url, headers(content_type))
                     end
       rescue RestClient::ExceptionWithResponse => e
         return { error: e.response.body }
@@ -31,9 +31,9 @@ module FaxplusApi
 
     private
 
-      def headers
+      def headers(content_type)
         {
-          'Content-Type' => 'application/json',
+          'Content-Type' => content_type,
           'Accept' => 'application/json',
           'Authorization' => "Bearer #{@access_token}"
         }

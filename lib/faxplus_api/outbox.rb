@@ -8,7 +8,7 @@ module FaxplusApi
     end
 
     def send(url: "#{@base_url}/accounts/%{user_id}/outbox", user_id:, data: {})
-      url = url % {user_id: user_id, fax_id: fax_id}
+      url = url % {user_id: user_id}
       make_request(url: url, data: data, method: 'post')
     end
 
