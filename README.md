@@ -6,7 +6,7 @@ Faxplus is a Ruby library for interacting with faxplus APIs.
 To start using faxplus, you first need to add it to your Gemfile, with an entry such as this:
 
 ```ruby
-gem 'faxplus_ruby'
+gem 'faxplus_api'
 ```
 
 Afterwards, run `bundle install` 
