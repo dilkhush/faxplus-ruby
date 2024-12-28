@@ -22,7 +22,7 @@ DESC
   spec.require_paths = ["lib"]
   spec.required_ruby_version = '>= 2.7.0'
 
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_runtime_dependency "rest-client", "~> 2.0.0"
-  spec.add_runtime_dependency "json", "~> 1.8.6"
+  spec.add_development_dependency "bundler", "=> 1.15"
+  spec.add_runtime_dependency "rest-client", "=> 2.0.0"
+  spec.add_runtime_dependency "json", "=> 1.8.6"
 end
